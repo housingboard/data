@@ -1,0 +1,7 @@
+
+
+const element = 
+
+document.getElementById("ContentPlaceHolder1_footer2_txt_Distance").value=1;
+
+
