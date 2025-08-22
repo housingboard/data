@@ -6,4 +6,4 @@ document.getElementById("ContentPlaceHolder1_footer2_txt_Distance").value=1;
 
 .15323946
 https://ifms.rajasthan.gov.in/employeeManagement/#/employee/joining-request/joining-detail
-
+https://ifms.rajasthan.gov.in/employeeManagement/#/workflowConfiguration/workflowTaskAssignment
