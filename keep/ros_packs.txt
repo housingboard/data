@@ -1,1 +1,5 @@
+#!/bin/bash
+
+apt update
+apt install hplip hplip-gui fonts-noto 
 
