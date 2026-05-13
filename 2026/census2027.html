@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Epic Edit View</title>
+
+<style>
+
+ body {
+      margin: 0;
+      padding: 16px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #fafafa;
+      color: #222;
+      text-align: center;
+      
+    }
+    h2 {
+      margin: 0 0 12px 0;
+      font-size: 1.2rem;
+    }
+    .go_center
+    {
+    	 margin: 0 auto; 
+      text-align: center;
+    	
+    	
+    }
+    .go_center_table
+    {
+    	 margin: 0 auto; 
+      text-align: center;
+    	
+    	
+    }
+    .modx {
+      white-space: pre-wrap;   /* preserve line breaks, wrap long lines */
+      word-wrap: break-word;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: 15px;
+      line-height: 1.5;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 2px;
+      overflow-y: auto;
+      min-width: 50px;
+    }
+     .modxb {
+      white-space: pre-wrap;   /* preserve line breaks, wrap long lines */
+      word-wrap: break-word;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: 15px;
+      line-height: 1.5;
+      background-color: #dde7ff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 2px;
+      max-height: 80vh;
+      overflow-y: auto;
+      min-width: 40px;
+    }
+    .modxb2 {
+      white-space: pre-wrap;   /* preserve line breaks, wrap long lines */
+      word-wrap: break-word;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: 15px;
+      background-color: #dde7ff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 2px;
+      max-height: 80vh;
+      width: 30px;
+      height: 30px;
+    }
+    
+    .modxt {
+      white-space: pre-wrap;   /* preserve line breaks, wrap long lines */
+      word-wrap: break-word;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: 15px;
+      line-height: 1.5;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 5px;
+      height: 80px;
+      width: calc(200px);
+      overflow-y: auto;
+    }
+    
+.modxb:hover {
+  background-color: #f0f8ff; /* light blue */
+  color: #333;
+}
+
+/* Click (active) effect */
+.modxb:active {
+  background-color: #cce7ff; /* darker blue */
+  color: #000;
+}
+
+ 
+.modxb2:hover {
+  background-color: #f0f8ff; /* light blue */
+  color: #333;
+}
+
+/* Click (active) effect */
+.modxb2:active {
+  background-color: #cce7ff; /* darker blue */
+  color: #000;
+}
+    #status {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #2c7a3f;
+    }
+    
+    table {
+      /* border-collapse: collapse;  ensures borders don’t double up */
+      border-radius: 8px;
+      border: 1px solid black;
+     
+       
+    }
+
+    table, tr, td {
+       border-collapse: collapse;
+       border: 1px solid black; /* sets border for table, rows, and cells */
+    }
+
+    td {
+      padding: 2px; /* adds spacing inside cells */
+      text-align: center;
+    }
+    
+    #output { margin-top: 15px; font-size: 20px; }
+    #suggestions { margin-top: 10px; border: 1px solid #ccc; padding: 8px; max-width: 320px; }
+    #suggestions div { padding: 4px; cursor: pointer; }
+    #suggestions div:hover { background-color: #f0f0f0; }
+    
+    #hindi_sug_div
+    {
+    	position: absolute;
+    	background-color: white;
+    }
+    
+    #show_profile_photo
+    {
+    	
+    	font-size: 24px;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	top: 0px;
+	left: 0px;
+	text-align: center;
+	font-weight: bold;
+	max-width: calc(100% - 0px);
+    }
+    .class_profile_photo_td
+    {
+    	padding: 0px;
+    	margin: 0px;
+    }
+    .class_profile_photo_div
+    {
+    	padding: 0px;
+    	margin: 0px;
+    	width: 90px;
+    	height: 120px;
+    	display: flex;
+    	justify-content: center;
+  	align-items: center;  
+    }
+    #edit-birth
+    {
+    	width:20px;
+    }
+    #edit-root
+    {
+    	width:120px;
+    }
+    .pre_cont
+    {
+    	color: #cccccc;
+    }
+    .text_vert
+    {
+    	writing-mode: vertical-rl;
+    }
+
+</style>
+  
+</head>
+<body>
+ <div class="go_center" >
+  <h2>Awnto Census 2027</h2>
+  <table class="go_center_table" >
+  	<tr>
+  		<td></td>
+  		<td>Q</td><td>Question</td><td>Answer</td>
+  		<td></td>
+  		<td>Q</td><td>Question</td><td>Answer</td>
+  	</tr>
+  	<tr>
+  		<td  ></td>
+  		<td colspan=3 ></td>
+  		<td colspan=1 ></td>
+  		<td colspan=3 ></td>
+  	</tr>
+  	
+  	
+  	
+  	<tr>
+  		<td rowspan="4" class="text_vert" >Require</td>
+  		<td>Q1</td><td>Line SR</td><td class="pre_cont" >[AUTO]</td>
+  		<td></td>
+  		<td>Q2</td><td>Build No</td><td class="pre_cont" >[ONCE]</td>
+  	</tr>
+  	<tr>
+  		<td>Q3</td><td>House No</td><td class="pre_cont" >[AUTO]</td>
+  		<td></td>
+  		<td>Q9</td><td>Family No</td><td class="pre_cont" >[AUTO]</td>
+  	</tr>
+  	
+  	
+  	<tr>
+  		
+  		<td>Q4</td><td>Floor</td><td class="pre_cont" >Material</td>
+  		<td></td>
+  		<td>Q5</td><td>Wall</td><td class="pre_cont" >Material</td>
+  	</tr>
+  	
+  	<tr>
+  		<td>Q6</td><td>Roof</td><td class="pre_cont" >Material</td>
+  		<td></td>
+  		<td>Q7</td><td>Build Use</td><td class="pre_cont" >Residence</td>
+  		
+  	</tr>
+  	<tr>
+  		<td></td>
+  		<td colspan=3 ></td>
+  		<td colspan=1 ></td>
+  		<td colspan=3 ></td>
+  	</tr>
+  	
+  	<tr>
+  		<td rowspan="20" class="text_vert" >Common Family</td>
+  		<td>Q11</td><td>Head</td><td colspan=5 class="pre_cont" >Name of Head of the Family</td>
+  	</tr>
+  	<tr>
+  		<td>Q34</td><td>Phone No</td><td colspan=5 class="pre_cont" >Write Phone Number</td>
+  	</tr>
+  	<tr>
+  		<td>Q12</td><td>Head Gender</td><td class="pre_cont" >M F T</td>
+  		<td></td>
+  		<td>Q13</td><td>Category</td><td class="pre_cont" >SC/ST</td>
+  		
+  	</tr>
+  	<tr>
+  		<td>Q14</td><td>Ownership</td><td class="pre_cont" >Own/Rent</td>
+  		<td></td>
+  		<td>Q10</td><td>Total Member</td><td class="pre_cont" >Count</td>
+  	</tr>
+  	
+  	<tr>
+  		<td>Q15</td><td>Total Rooms</td><td class="pre_cont" >Count</td>
+  		<td></td>
+  		<td>Q16</td><td>Total Couples</td><td class="pre_cont" >Count</td>
+  	</tr>
+  	
+  	
+  	
+  	<tr>
+  		<td>Q8</td><td>Condition</td><td class="pre_cont" >Good</td>
+  		<td></td>
+  		<td>Q19</td><td>Light Source</td><td class="pre_cont" >Electricity</td>
+  	</tr>
+  	<tr>
+  		
+  		<td>Q17</td><td>Water Source</td><td class="pre_cont" >Good Tap</td>
+  		<td></td>
+  		<td>Q18</td><td>Water Avail</td><td class="pre_cont" >In/Out/Away</td>
+  	</tr>
+  	<tr>
+  		
+  		<td>Q20</td><td>Lavatory</td><td class="pre_cont" >Personal</td>
+  		<td></td>
+  		<td>Q21</td><td>Lavatory Type</td><td class="pre_cont" >Piped/Tank</td>
+  	</tr>
+  	<tr>
+  		
+  		<td>Q22</td><td>Waste Water Drain</td><td class="pre_cont" >Open/Closed</td>
+  		<td></td>
+  		<td>Q23</td><td>Bathroom</td><td class="pre_cont" >Y/N/OpenRoof</td>
+  	</tr>
+  	
+  	<tr>
+  		
+  		<td>Q24</td><td>Kitchen</td><td class="pre_cont" >Y/N(in/out)|LPG</td>
+  		<td></td>
+  		<td>Q25</td><td>Cooking Fuel</td><td class="pre_cont" >LPG/Wood</td>
+  	</tr>
+  	<tr>
+  		
+  		<td>Q26</td><td>Radio</td><td class="pre_cont" >Y/N/Phone</td>
+  		<td></td>
+  		<td>Q27</td><td>TV</td><td class="pre_cont" >DD/DTH/Cable</td>
+  	</tr>
+  	
+  	<tr>
+  		
+  		<td>Q28</td><td>Internet</td><td class="pre_cont" >Laptop/Phone</td>
+  		<td></td>
+  		<td>Q29</td><td>Laptop/Computer</td><td class="pre_cont" >Yes/No</td>
+  	</tr>
+  	
+  	<tr>
+  		
+  		<td>Q30</td><td>Telephone</td><td class="pre_cont" >Landline/Phone/both</td>
+  		<td></td>
+  		<td>Q31</td><td>Bike</td><td class="pre_cont" >Cycle/Moter/Both</td>
+  	</tr>
+  	<tr>
+  		
+  		<td>Q32</td><td>Car/Jeep/Van</td><td class="pre_cont" >Yes/No</td>
+  		<td></td>
+  		<td>Q33</td><td>Food Source</td><td class="pre_cont" >Rice/Wheet/Maize/Bajra</td>
+  	</tr>
+  </table>
+ </div>
+
+</body>
+</html>
